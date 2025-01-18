@@ -2,45 +2,44 @@
 #include <cmath>
 #include <string>
 using namespace std;
-  
-  /*
-  Making an program that print complex number and helps to learn about passing object as arguments.
-  */
-   class complex{
-     int a , b;
-     public:
-     void setdata(int v1 , int v2)
-     {
-       a=v1;
-       b=v2;
-       
-     }
 
-     void getdata(complex r, complex i)  // where printcomplex is class name and we're passing objects in class functions as arguments
-     {
-         a=r.a+i.a;
-         b=r.b=i.b;
-     }
+  class Y;
 
-     void print()
-     {
-      cout<<"The complex number is: "<<a<<" + "<<b<<"i"<<endl;
-     }
+   class X{
+    int a;
+    public:
+    
+    friend void prodof( X ,Y);
+    void seta(int value){
+      a=value;
+    }
+   };
+
+   class Y{
+    int b;
+    public:
+
+    friend void prodof(X , Y);
+
+    void setb(int value) {
+      b=value;
+    }
 
    };
 
+   void prodof(X p1 , Y p2)
+   {
+    int prod = p1.a * p2.b;
+    cout<<"The Product of the numbers are: "<<prod<<endl;
+   }
 
-int main(){ 
-  complex c1,c2,c3;
+int main(){
 
-   c1.setdata(1,2);
-   c1.print();
-
-   c2.setdata(3,8);
-   c2.print();
-
-   c3.setdata(10,22);
-   c3.print();
+  X num1;
+  num1.seta(3);
+  Y num2;
+  num2.setb(200);
+  prodof(num1 , num2 );
 
 return 0;
 }
